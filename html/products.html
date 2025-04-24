@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm | CameraVN - Cửa hàng máy ảnh chuyên nghiệp</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Navbar -->
+
+<!-- Page Title -->
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="fw-bold">Sản phẩm</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <div class="d-inline-flex align-items-center">
+                    <span class="me-2">Sắp xếp theo:</span>
+                    <select class="form-select form-select-sm" id="sortOrder" style="width: auto;">
+                        <option value="popular">Phổ biến nhất</option>
+                        <option value="newest">Mới nhất</option>
+                        <option value="price-asc">Giá: Thấp đến cao</option>
+                        <option value="price-desc">Giá: Cao đến thấp</option>
+                        <option value="rating">Đánh giá</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Filter Sidebar -->
+            <div class="col-lg-3">
+                <div class="product-filter-advanced sticky-top" style="top: 100px;">
+                    <h4 class="mb-4">Bộ lọc sản phẩm</h4>
+                    
+                    <!-- Categories -->
+                    <div class="filter-section mb-4">
+                        <h5 class="filter-title" data-bs-toggle="collapse" data-bs-target="#categoryFilter">
+                            Danh mục sản phẩm <i class="bi bi-chevron-down"></i>
+                        </h5>
+                        <div class="collapse show" id="categoryFilter">
+                            <div class="filter-body">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="dslr">
+                                    <label class="form-check-label" for="dslr">Máy ảnh DSLR</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="mirrorless">
+                                    <label class="form-check-label" for="mirrorless">Máy ảnh Mirrorless</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="compact">
+                                    <label class="form-check-label" for="compact">Máy ảnh Compact</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="lens">
+                                    <label class="form-check-label" for="lens">Ống kính (Lens)</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="accessories">
+                                    <label class="form-check-label" for="accessories">Phụ kiện</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Brands -->
+                    <div class="filter-section mb-4">
+                        <h5 class="filter-title" data-bs-toggle="collapse" data-bs-target="#brandFilter">
+                            Thương hiệu <i class="bi bi-chevron-down"></i>
+                        </h5>
+                        <div class="collapse show" id="brandFilter">
+                            <div class="filter-body">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="canon">
+                                    <label class="form-check-label" for="canon">Canon</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="sony">
+                                    <label class="form-check-label" for="sony">Sony</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="nikon">
+                                    <label class="form-check-label" for="nikon">Nikon</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="fujifilm">
+                                    <label class="form-check-label" for="fujifilm">Fujifilm</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="panasonic">
+                                    <label class="form-check-label" for="panasonic">Panasonic</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="leica">
+                                    <label class="form-check-label" for="leica">Leica</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Price Range -->
+                    <div class="filter-section mb-4">
+                        <h5 class="filter-title" data-bs-toggle="collapse" data-bs-target="#priceFilter">
+                            Khoảng giá <i class="bi bi-chevron-down"></i>
+                        </h5>
+                        <div class="collapse show" id="priceFilter">
+                            <div class="filter-body">
+                                <div class="range-slider mt-3">
+                                    <input type="range" class="form-range" min="0" max="100000000" step="1000000" id="priceRange">
+                                </div>
+                                <div class="d-flex justify-content-between mt-2">
+                                    <div class="input-group input-group-sm">
+                                        <span class="input-group-text">₫</span>
+                                        <input type="text" class="form-control" id="minPrice" value="0">
+                                    </div>
+                                    <div class="mx-2 d-flex align-items-center">-</div>
+                                    <div class="input-group input-group-sm">
+                                        <span class="input-group-text">₫</span>
+                                        <input type="text" class="form-control" id="maxPrice" value="100000000">
+                                    </div>
+                                </div>
+                                <button class="btn btn-sm btn-primary w-100 mt-3">Áp dụng</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Features -->
+                    <div class="filter-section mb-4">
+                        <h5 class="filter-title" data-bs-toggle="collapse" data-bs-target="#featureFilter">
+                            Tính năng <i class="bi bi-chevron-down"></i>
+                        </h5>
+                        <div class="collapse show" id="featureFilter">
+                            <div class="filter-body">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="wifi">
+                                    <label class="form-check-label" for="wifi">Kết nối Wi-Fi</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="bluetooth">
+                                    <label class="form-check-label" for="bluetooth">Bluetooth</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="4k">
+                                    <label class="form-check-label" for="4k">Quay video 4K</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="touchscreen">
+                                    <label class="form-check-label" for="touchscreen">Màn hình cảm ứng</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="stabilization">
+                                    <label class="form-check-label" for="stabilization">Chống rung</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Ratings -->
+                    <div class="filter-section mb-4">
+                        <h5 class="filter-title" data-bs-toggle="collapse" data-bs-target="#ratingFilter">
+                            Đánh giá <i class="bi bi-chevron-down"></i>
+                        </h5>
+                        <div class="collapse show" id="ratingFilter">
+                            <div class="filter-body">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="rating" id="rating5">
+                                    <label class="form-check-label" for="rating5">
+                                        <div class="product-rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="rating" id="rating4">
+                                    <label class="form-check-label" for="rating4">
+                                        <div class="product-rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star"></i>
+                                            <span>& trở lên</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="rating" id="rating3">
+                                    <label class="form-check-label" for="rating3">
+                                        <div class="product-rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star"></i>
+                                            <i class="bi bi-star"></i>
+                                            <span>& trở lên</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="rating" id="rating2">
+                                    <label class="form-check-label" for="rating2">
+                                        <div class="product-rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star"></i>
+                                            <i class="bi bi-star"></i>
+                                            <i class="bi bi-star"></i>
+                                            <span>& trở lên</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="rating" id="rating1">
+                                    <label class="form-check-label" for="rating1">
+                                        <div class="product-rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star"></i>
+                                            <i class="bi bi-star"></i>
+                                            <i class="bi bi-star"></i>
+                                            <i class="bi bi-star"></i>
+                                            <span>& trở lên</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary w-100">Xóa bộ lọc</button>
+                </div>
+            </div>
+            
+            <!-- Products Grid -->
+            <div class="col-lg-9">
+                <div class="row g-4 products-container">
+                    <!-- Product 1 -->
+                    <div class="col-md-6 col-lg-4 product-item" data-category="canon">
+                        <div class="product-card h-100">
+                            <div class="product-card-inner">
+                                <div class="product-image-container">
+                                    <span class="product-badge sale">-15%</span>
+                                    <button class="product-wishlist-btn" type="button">
+                                        <i class="bi bi-heart"></i>
+                                        <i class="bi bi-heart-fill"></i>
+                                    </button>
+                                    <div class="product-image" style="background-image: url('figmaframe/hero.jpg')"></div>
+                                    <div class="product-overlay">
+                                        <button class="btn btn-sm btn-light product-quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product="1">
+                                            <i class="bi bi-eye"></i> Xem nhanh
+                                        </button>
+                                        <a href="product-detail.html?id=1" class="btn btn-sm btn-primary">
+                                            <i class="bi bi-info-circle"></i> Chi tiết
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-brand">Canon</div>
+                                    <h5 class="product-title">
+                                        <a href="product-detail.html?id=1" class="text-dark text-decoration-none">Canon EOS 850D</a>
+                                    </h5>
+                                    <div class="product-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                        <span class="ms-2">4.8 (76 đánh giá)</span>
+                                    </div>
+                                    <div class="product-description">
+                                        Máy ảnh DSLR Canon EOS 850D kèm Lens Kit 18-55mm, 24.1MP, 4K, Wi-Fi, Bluetooth.
+                                    </div>
+                                    <div class="product-price-wrapper">
+                                        <span class="product-price-old">22.990.000đ</span>
+                                        <span class="product-price">19.490.000đ</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="product-stock in-stock">
+                                            <i class="bi bi-check-circle-fill"></i> Còn hàng
+                                        </span>
+                                        <span class="product-sold">
+                                            <i class="bi bi-bag-check"></i> Đã bán: 76
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-primary w-100 mt-3 product-add-to-cart-btn" data-product="1">
+                                        <i class="bi bi-cart-plus"></i> Thêm vào giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="col-md-6 col-lg-4 product-item" data-category="sony">
+                        <div class="product-card h-100">
+                            <div class="product-card-inner">
+                                <div class="product-image-container">
+                                    <span class="product-badge new">Mới</span>
+                                    <button class="product-wishlist-btn" type="button">
+                                        <i class="bi bi-heart"></i>
+                                        <i class="bi bi-heart-fill"></i>
+                                    </button>
+                                    <div class="product-image" style="background-image: url('figmaframe/hero.jpg')"></div>
+                                    <div class="product-overlay">
+                                        <button class="btn btn-sm btn-light product-quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product="2">
+                                            <i class="bi bi-eye"></i> Xem nhanh
+                                        </button>
+                                        <a href="product-detail.html?id=2" class="btn btn-sm btn-primary">
+                                            <i class="bi bi-info-circle"></i> Chi tiết
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-brand">Sony</div>
+                                    <h5 class="product-title">
+                                        <a href="product-detail.html?id=2" class="text-dark text-decoration-none">Sony Alpha A7 IV</a>
+                                    </h5>
+                                    <div class="product-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <span class="ms-2">4.9 (42 đánh giá)</span>
+                                    </div>
+                                    <div class="product-description">
+                                        Máy ảnh Sony Alpha A7 IV Mirrorless Full-frame, 33MP, 4K60p, 10fps, Eye-AF.
+                                    </div>
+                                    <div class="product-price-wrapper">
+                                        <span class="product-price">55.990.000đ</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="product-stock in-stock">
+                                            <i class="bi bi-check-circle-fill"></i> Còn hàng
+                                        </span>
+                                        <span class="product-sold">
+                                            <i class="bi bi-bag-check"></i> Đã bán: 42
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-primary w-100 mt-3 product-add-to-cart-btn" data-product="2">
+                                        <i class="bi bi-cart-plus"></i> Thêm vào giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="col-md-6 col-lg-4 product-item" data-category="nikon">
+                        <div class="product-card h-100">
+                            <div class="product-card-inner">
+                                <div class="product-image-container">
+                                    <span class="product-badge sale">-20%</span>
+                                    <button class="product-wishlist-btn" type="button">
+                                        <i class="bi bi-heart"></i>
+                                        <i class="bi bi-heart-fill"></i>
+                                    </button>
+                                    <div class="product-image" style="background-image: url('figmaframe/hero.jpg')"></div>
+                                    <div class="product-overlay">
+                                        <button class="btn btn-sm btn-light product-quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product="3">
+                                            <i class="bi bi-eye"></i> Xem nhanh
+                                        </button>
+                                        <a href="product-detail.html?id=3" class="btn btn-sm btn-primary">
+                                            <i class="bi bi-info-circle"></i> Chi tiết
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-brand">Nikon</div>
+                                    <h5 class="product-title">
+                                        <a href="product-detail.html?id=3" class="text-dark text-decoration-none">Nikon Z6 II</a>
+                                    </h5>
+                                    <div class="product-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                        <span class="ms-2">4.7 (38 đánh giá)</span>
+                                    </div>
+                                    <div class="product-description">
+                                        Máy ảnh Nikon Z6 II Mirrorless Full-frame, 24.5MP, 4K, Wi-Fi, IBIS.
+                                    </div>
+                                    <div class="product-price-wrapper">
+                                        <span class="product-price-old">48.990.000đ</span>
+                                        <span class="product-price">38.990.000đ</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="product-stock in-stock">
+                                            <i class="bi bi-check-circle-fill"></i> Còn hàng
+                                        </span>
+                                        <span class="product-sold">
+                                            <i class="bi bi-bag-check"></i> Đã bán: 38
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-primary w-100 mt-3 product-add-to-cart-btn" data-product="3">
+                                        <i class="bi bi-cart-plus"></i> Thêm vào giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="col-md-6 col-lg-4 product-item" data-category="fuji">
+                        <div class="product-card h-100">
+                            <div class="product-card-inner">
+                                <div class="product-image-container">
+                                    <span class="product-badge hot">Hot</span>
+                                    <button class="product-wishlist-btn" type="button">
+                                        <i class="bi bi-heart"></i>
+                                        <i class="bi bi-heart-fill"></i>
+                                    </button>
+                                    <div class="product-image" style="background-image: url('figmaframe/hero.jpg')"></div>
+                                    <div class="product-overlay">
+                                        <button class="btn btn-sm btn-light product-quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product="4">
+                                            <i class="bi bi-eye"></i> Xem nhanh
+                                        </button>
+                                        <a href="product-detail.html?id=4" class="btn btn-sm btn-primary">
+                                            <i class="bi bi-info-circle"></i> Chi tiết
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-brand">Fujifilm</div>
+                                    <h5 class="product-title">
+                                        <a href="product-detail.html?id=4" class="text-dark text-decoration-none">Fujifilm X-T4</a>
+                                    </h5>
+                                    <div class="product-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <span class="ms-2">4.9 (56 đánh giá)</span>
+                                    </div>
+                                    <div class="product-description">
+                                        Máy ảnh Fujifilm X-T4 Mirrorless, 26.1MP, 4K60p, chống rung IBIS 5 trục.
+                                    </div>
+                                    <div class="product-price-wrapper">
+                                        <span class="product-price">42.990.000đ</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="product-stock in-stock">
+                                            <i class="bi bi-check-circle-fill"></i> Còn hàng
+                                        </span>
+                                        <span class="product-sold">
+                                            <i class="bi bi-bag-check"></i> Đã bán: 56
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-primary w-100 mt-3 product-add-to-cart-btn" data-product="4">
+                                        <i class="bi bi-cart-plus"></i> Thêm vào giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 5 -->
+                    <div class="col-md-6 col-lg-4 product-item" data-category="canon">
+                        <div class="product-card h-100">
+                            <div class="product-card-inner">
+                                <div class="product-image-container">
+                                    <span class="product-badge best">Best</span>
+                                    <button class="product-wishlist-btn" type="button">
+                                        <i class="bi bi-heart"></i>
+                                        <i class="bi bi-heart-fill"></i>
+                                    </button>
+                                    <div class="product-image" style="background-image: url('figmaframe/hero.jpg')"></div>
+                                    <div class="product-overlay">
+                                        <button class="btn btn-sm btn-light product-quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product="5">
+                                            <i class="bi bi-eye"></i> Xem nhanh
+                                        </button>
+                                        <a href="product-detail.html?id=5" class="btn btn-sm btn-primary">
+                                            <i class="bi bi-info-circle"></i> Chi tiết
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-brand">Canon</div>
+                                    <h5 class="product-title">
+                                        <a href="product-detail.html?id=5" class="text-dark text-decoration-none">Canon RF 24-70mm f/2.8L</a>
+                                    </h5>
+                                    <div class="product-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                        <span class="ms-2">4.8 (32 đánh giá)</span>
+                                    </div>
+                                    <div class="product-description">
+                                        Ống kính Canon RF 24-70mm f/2.8L IS USM cho máy ảnh mirrorless full-frame.
+                                    </div>
+                                    <div class="product-price-wrapper">
+                                        <span class="product-price">59.990.000đ</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="product-stock limited">
+                                            <i class="bi bi-exclamation-triangle-fill"></i> Sắp hết hàng
+                                        </span>
+                                        <span class="product-sold">
+                                            <i class="bi bi-bag-check"></i> Đã bán: 32
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-primary w-100 mt-3 product-add-to-cart-btn" data-product="5">
+                                        <i class="bi bi-cart-plus"></i> Thêm vào giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 6 -->
+                    <div class="col-md-6 col-lg-4 product-item" data-category="sony">
+                        <div class="product-card h-100">
+                            <div class="product-card-inner">
+                                <div class="product-image-container">
+                                    <span class="product-badge sale">-10%</span>
+                                    <button class="product-wishlist-btn" type="button">
+                                        <i class="bi bi-heart"></i>
+                                        <i class="bi bi-heart-fill"></i>
+                                    </button>
+                                    <div class="product-image" style="background-image: url('figmaframe/hero.jpg')"></div>
+                                    <div class="product-overlay">
+                                        <button class="btn btn-sm btn-light product-quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product="6">
+                                            <i class="bi bi-eye"></i> Xem nhanh
+                                        </button>
+                                        <a href="product-detail.html?id=6" class="btn btn-sm btn-primary">
+                                            <i class="bi bi-info-circle"></i> Chi tiết
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-brand">Sony</div>
+                                    <h5 class="product-title">
+                                        <a href="product-detail.html?id=6" class="text-dark text-decoration-none">Sony ZV-E10</a>
+                                    </h5>
+                                    <div class="product-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                        <span class="ms-2">4.7 (87 đánh giá)</span>
+                                    </div>
+                                    <div class="product-description">
+                                        Máy ảnh Sony ZV-E10 dành cho Vlog, APS-C, 24.2MP, 4K, màn hình xoay.
+                                    </div>
+                                    <div class="product-price-wrapper">
+                                        <span class="product-price-old">19.990.000đ</span>
+                                        <span class="product-price">17.990.000đ</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="product-stock in-stock">
+                                            <i class="bi bi-check-circle-fill"></i> Còn hàng
+                                        </span>
+                                        <span class="product-sold">
+                                            <i class="bi bi-bag-check"></i> Đã bán: 87
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-primary w-100 mt-3 product-add-to-cart-btn" data-product="6">
+                                        <i class="bi bi-cart-plus"></i> Thêm vào giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 7 -->
+                    <div class="col-md-6 col-lg-4 product-item" data-category="nikon">
+                        <div class="product-card h-100">
+                            <div class="product-card-inner">
+                                <div class="product-image-container">
+                                    <button class="product-wishlist-btn" type="button">
+                                        <i class="bi bi-heart"></i>
+                                        <i class="bi bi-heart-fill"></i>
+                                    </button>
+                                    <div class="product-image" style="background-image: url('figmaframe/hero.jpg')"></div>
+                                    <div class="product-overlay">
+                                        <button class="btn btn-sm btn-light product-quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product="7">
+                                            <i class="bi bi-eye"></i> Xem nhanh
+                                        </button>
+                                        <a href="product-detail.html?id=7" class="btn btn-sm btn-primary">
+                                            <i class="bi bi-info-circle"></i> Chi tiết
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-brand">Nikon</div>
+                                    <h5 class="product-title">
+                                        <a href="product-detail.html?id=7" class="text-dark text-decoration-none">Nikon Z50</a>
+                                    </h5>
+                                    <div class="product-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star"></i>
+                                        <span class="ms-2">4.0 (45 đánh giá)</span>
+                                    </div>
+                                    <div class="product-description">
+                                        Máy ảnh Nikon Z50 Mirrorless APS-C, 20.9MP, 4K UHD, màn hình cảm ứng lật.
+                                    </div>
+                                    <div class="product-price-wrapper">
+                                        <span class="product-price">22.990.000đ</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="product-stock in-stock">
+                                            <i class="bi bi-check-circle-fill"></i> Còn hàng
+                                        </span>
+                                        <span class="product-sold">
+                                            <i class="bi bi-bag-check"></i> Đã bán: 45
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-primary w-100 mt-3 product-add-to-cart-btn" data-product="7">
+                                        <i class="bi bi-cart-plus"></i> Thêm vào giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 8 -->
+                    <div class="col-md-6 col-lg-4 product-item" data-category="fuji">
+                        <div class="product-card h-100">
+                            <div class="product-card-inner">
+                                <div class="product-image-container">
+                                    <span class="product-badge new">Mới</span>
+                                    <button class="product-wishlist-btn" type="button">
+                                        <i class="bi bi-heart"></i>
+                                        <i class="bi bi-heart-fill"></i>
+                                    </button>
+                                    <div class="product-image" style="background-image: url('figmaframe/hero.jpg')"></div>
+                                    <div class="product-overlay">
+                                        <button class="btn btn-sm btn-light product-quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product="8">
+                                            <i class="bi bi-eye"></i> Xem nhanh
+                                        </button>
+                                        <a href="product-detail.html?id=8" class="btn btn-sm btn-primary">
+                                            <i class="bi bi-info-circle"></i> Chi tiết
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-brand">Fujifilm</div>
+                                    <h5 class="product-title">
+                                        <a href="product-detail.html?id=8" class="text-dark text-decoration-none">Fujifilm X-S10</a>
+                                    </h5>
+                                    <div class="product-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <span class="ms-2">4.9 (35 đánh giá)</span>
+                                    </div>
+                                    <div class="product-description">
+                                        Máy ảnh Fujifilm X-S10 Mirrorless, 26.1MP, 4K30p, chống rung IBIS 5 trục.
+                                    </div>
+                                    <div class="product-price-wrapper">
+                                        <span class="product-price">29.990.000đ</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="product-stock in-stock">
+                                            <i class="bi bi-check-circle-fill"></i> Còn hàng
+                                        </span>
+                                        <span class="product-sold">
+                                            <i class="bi bi-bag-check"></i> Đã bán: 35
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-primary w-100 mt-3 product-add-to-cart-btn" data-product="8">
+                                        <i class="bi bi-cart-plus"></i> Thêm vào giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 9 -->
+                    <div class="col-md-6 col-lg-4 product-item" data-category="canon">
+                        <div class="product-card h-100">
+                            <div class="product-card-inner">
+                                <div class="product-image-container">
+                                    <button class="product-wishlist-btn" type="button">
+                                        <i class="bi bi-heart"></i>
+                                        <i class="bi bi-heart-fill"></i>
+                                    </button>
+                                    <div class="product-image" style="background-image: url('figmaframe/hero.jpg')"></div>
+                                    <div class="product-overlay">
+                                        <button class="btn btn-sm btn-light product-quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product="9">
+                                            <i class="bi bi-eye"></i> Xem nhanh
+                                        </button>
+                                        <a href="product-detail.html?id=9" class="btn btn-sm btn-primary">
+                                            <i class="bi bi-info-circle"></i> Chi tiết
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-brand">Canon</div>
+                                    <h5 class="product-title">
+                                        <a href="product-detail.html?id=9" class="text-dark text-decoration-none">Canon EOS R6</a>
+                                    </h5>
+                                    <div class="product-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                        <span class="ms-2">4.6 (52 đánh giá)</span>
+                                    </div>
+                                    <div class="product-description">
+                                        Máy ảnh Canon EOS R6 Mirrorless Full-frame, 20.1MP, 4K60p, IBIS, Dual Pixel AF.
+                                    </div>
+                                    <div class="product-price-wrapper">
+                                        <span class="product-price">64.990.000đ</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="product-stock out-of-stock">
+                                            <i class="bi bi-x-circle-fill"></i> Hết hàng
+                                        </span>
+                                        <span class="product-sold">
+                                            <i class="bi bi-bag-check"></i> Đã bán: 52
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-secondary w-100 mt-3" disabled>
+                                        <i class="bi bi-bell"></i> Thông báo khi có hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <nav class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                <i class="bi bi-chevron-left"></i>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <i class="bi bi-chevron-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section" data-aos="fade-up">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="section-title">Đăng ký nhận thông tin</h2>
+                <p class="lead mb-4">Cập nhật tin tức về sản phẩm mới, khuyến mãi và các bài viết hướng dẫn nhiếp ảnh.</p>
+                <div class="newsletter-form">
+                    <input type="email" class="form-control newsletter-input" placeholder="Email của bạn">
+                    <button type="submit" class="btn btn-light newsletter-btn">Đăng ký</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+
+
+<!-- Quick View Modal -->
+
+<!-- Login Modal -->
+
+
+<!-- Register Modal -->
+
+<!-- Back to Top Button -->
+<a href="#" class="back-to-top" id="backToTop">
+    <i class="bi bi-arrow-up"></i>
+</a>
+
+<!-- JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+<script src="scripts.js"></script>
+
+</body>
+</html>
